@@ -2,6 +2,11 @@ import {Cliente} from "./Cliente.js";
 
 export class Conta {
     constructor(saldoInicial, cliente, agencia) {
+
+        if(this.constructor == Conta) {
+            throw new Error("Não é recomendável o uso");
+        }
+
         this._saldo = saldoInicial;
         this._cliente = cliente;
         this._agencia = agencia;
@@ -24,12 +29,18 @@ export class Conta {
     sacar(valor) {
 
         let taxa = 1
+        return this._sacar(valor, taxa);
+    }
+
+    _sacar(valor, taxa) {
         const valorSacado = taxa * valor;
 
         if (this._saldo >= valorSacado) {
             this._saldo -= valorSacado;
-            return valor;
+            return valorSacado;
         }
+
+        return 0;
     }
 
     depositar(valor) {
