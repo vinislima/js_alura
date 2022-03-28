@@ -1,4 +1,4 @@
-import {Cliente} from "./Cliente.js";
+import {Cliente} from "../Cliente.js";
 
 export class Conta {
     constructor(saldoInicial, cliente, agencia) {
@@ -27,9 +27,7 @@ export class Conta {
     }
 
     sacar(valor) {
-
-        let taxa = 1
-        return this._sacar(valor, taxa);
+        throw new Error("Não deve ser utilizado");
     }
 
     _sacar(valor, taxa) {
